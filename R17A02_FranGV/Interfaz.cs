@@ -56,53 +56,6 @@ namespace R17A02_FranGV
             return dato;
         }
 
-        public static float SolicitarFloat(string text)
-        {
-            // RECURSOS
-
-            string aux;
-            float dato;
-            bool esValido;
-
-            // INICIALIZACION
-
-            aux = "";
-            dato = 0.0f;
-
-            // ENTRADA
-
-            do
-            {
-                // RESET
-                esValido = true;
-
-                // SOLICITUD DATO
-
-                Console.Write($"Escriba su {text}: ");
-                aux = Console.ReadLine();
-
-                try
-                {
-                    dato = Comprobaciones.ErrorNum(aux);
-                }
-                catch (Exception Error)
-                {
-                    esValido = false;
-                    Console.WriteLine($"Error: {Error.Message}");
-                    Console.WriteLine("Pulse ENTER para continuar...");
-                    Console.ReadLine();
-                    Console.Clear();
-                }
-
-            } while (!esValido);
-
-            // PROCESO
-
-
-            // SALIDA METODO
-
-            return dato;
-        }
 
         public static float SolicitarFloat(string text, Producto OBJ)
         {
