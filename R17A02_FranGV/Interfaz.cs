@@ -105,7 +105,7 @@ namespace R17A02_FranGV
             return OBJ.Precio;
         }
 
-         public static void MostrarDatos(string nombres, float precios)
+         public static void MostrarDatos(string nombres, float precios, float precio2)
         {
             // RECURSOS
 
@@ -121,7 +121,7 @@ namespace R17A02_FranGV
 
             Console.WriteLine($"Nombre producto:\t{nombres}");
             Console.WriteLine("*************************************************");
-            Console.WriteLine($"Precio:\t{precios}");
+            Console.WriteLine($"Precio: {precios}\tIVA: {precio2}");
            
 
             // SALIDA

@@ -56,7 +56,6 @@ namespace R17A02_FranGV
                
                 // Metodo Privado
 
-               _precio = PrecioIva(_precio);
                 RedodearPrecio();
 
                 // Lectura
@@ -79,7 +78,7 @@ namespace R17A02_FranGV
         }
         // MÉTODOS PRIVADOS
 
-        private float PrecioIva(float numero)
+        public float PrecioIva()
         {
             // CONSTANTE
             const float IVA = 0.21f;
@@ -98,7 +97,6 @@ namespace R17A02_FranGV
             {
                 precioIva = -1;
             }
-            precioIva = numero + precioIva;
 
             return precioIva;
 
