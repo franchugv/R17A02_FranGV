@@ -73,9 +73,6 @@ namespace R17A02_FranGV
             // RECURSOS
 
             float IVA;
-
-            IVA = 0;
-
        
 
                 IVA = (_precio * IVA_PRODUCTO) / (100);
