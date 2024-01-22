@@ -16,7 +16,7 @@ namespace R17A02_FranGV
 
         private const float IVA_PRODUCTO = 21.0f;  // IVA PRODUCTO
 
-        private const float IVA_NOESTABLECIDO = -1.0f;
+        private const float IVA_NOESTABLECIDO = -1.0f;  // Solo en el caso de que el precio no se haya establecido 
 
         // MIEMBROS DE LA CLASE
 
@@ -51,6 +51,7 @@ namespace R17A02_FranGV
                 // Metodo Privado
                 
                 PrecioIva();
+                RedodearPrecio();
 
                 // Lectura
 
@@ -60,6 +61,10 @@ namespace R17A02_FranGV
             set
             {
                 // VALIDACIÓN DE MAXIMOS Y MÍNIMOS
+
+                if (value > PRECIO_MAX) throw new Exception("El precio supera el valor maximo");
+                if (value < PRECIO_MIN) throw new Exception("El precio es menor al valor maximo");
+
 
                 // ESCRITURA
                 _precio = value;
@@ -75,12 +80,17 @@ namespace R17A02_FranGV
             float IVA;
        
 
-                IVA = (_precio * IVA_PRODUCTO) / (100);
+                IVA = _precio * (IVA_PRODUCTO / 100);
 
                 _precio = IVA + _precio;            
             
 
             if(_precio <= 0) _precio = _precio * IVA_NOESTABLECIDO / (100 + IVA_NOESTABLECIDO);    // precio no establecido
+        }
+
+        private void RedodearPrecio()   // Redonder a dos decimales
+        {
+            _precio = (float)Math.Round(_precio, 2);
         }
 
     }
