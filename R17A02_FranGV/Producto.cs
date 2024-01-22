@@ -63,6 +63,7 @@ namespace R17A02_FranGV
                 // VALIDACIÓN DE MAXIMOS Y MÍNIMOS
 
                 if (value > PRECIO_MAX) throw new Exception("El precio supera el valor maximo");
+                // VALIDACIÓN DE MAXIMOS Y MÍNIMOS
                 if (value < PRECIO_MIN) throw new Exception("El precio es menor al valor maximo");
 
 
@@ -86,6 +87,11 @@ namespace R17A02_FranGV
             
 
             if(_precio <= 0) _precio = _precio * IVA_NOESTABLECIDO / (100 + IVA_NOESTABLECIDO);    // precio no establecido
+
+
+
+
+
         }
 
         private void RedodearPrecio()   // Redonder a dos decimales
