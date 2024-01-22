@@ -14,6 +14,10 @@ namespace R17A02_FranGV
                                                     // PRECIO MAXIM/MÍNIMO DEL PRODUCTO
         private const float PRECIO_MIN = 50.0f;
 
+
+        // ************************************************************************
+
+
         private const float IVA_PRODUCTO = 21.0f;  // IVA PRODUCTO
 
         private const float IVA_NOESTABLECIDO = -1.0f;  // Solo en el caso de que el precio no se haya establecido 
@@ -46,11 +50,13 @@ namespace R17A02_FranGV
             get
             {
                 // Excepciones
-                if (_precio <= 0) throw new Exception("valor no establecido");
+                // Comprobación de valor establecido
+                if (_precio == 0) throw new Exception("ERROR: Precio no estableciido");
 
+               
                 // Metodo Privado
-                
-                PrecioIva();
+
+               _precio = PrecioIva(_precio);
                 RedodearPrecio();
 
                 // Lectura
@@ -62,9 +68,9 @@ namespace R17A02_FranGV
             {
                 // VALIDACIÓN DE MAXIMOS Y MÍNIMOS
 
-                if (value > PRECIO_MAX) throw new Exception("El precio supera el valor maximo");
+                if (value > PRECIO_MAX) throw new Exception($"ERROR: El precio supera el valor maximo ({PRECIO_MIN} - {PRECIO_MAX})");
                 // VALIDACIÓN DE MAXIMOS Y MÍNIMOS
-                if (value < PRECIO_MIN) throw new Exception("El precio es menor al valor maximo");
+                if (value < PRECIO_MIN) throw new Exception($"ERROR: El precio es menor al valor maximo ({PRECIO_MIN} - {PRECIO_MAX})");
 
 
                 // ESCRITURA
@@ -73,23 +79,28 @@ namespace R17A02_FranGV
         }
         // MÉTODOS PRIVADOS
 
-        private void PrecioIva()
+        private float PrecioIva(float numero)
         {
+            // CONSTANTE
+            const float IVA = 0.21f;
 
             // RECURSOS
 
-            float IVA;
-       
-
-                IVA = _precio * (IVA_PRODUCTO / 100);
-
-                _precio = IVA + _precio;            
-            
-
-            if(_precio <= 0) _precio = _precio * IVA_NOESTABLECIDO / (100 + IVA_NOESTABLECIDO);    // precio no establecido
+            float precioIva = 0;
 
 
+            // PROCESO
+            try
+            {
+                precioIva = Precio * (1 + IVA);
+            }
+            catch (Exception error)
+            {
+                precioIva = -1;
+            }
+            precioIva = numero + precioIva;
 
+            return precioIva;
 
 
         }
