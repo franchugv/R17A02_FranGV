@@ -27,7 +27,7 @@
 
             // SALIDA
 
-            Interfaz.MostrarDatos(Compra.Nombre, Compra.Precio, Compra.PrecioIva());
+            Interfaz.MostrarDatos(Compra.Nombre, Compra.Precio, Compra.PreciosIva);
         }
     }
 }

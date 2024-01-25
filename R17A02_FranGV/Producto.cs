@@ -28,7 +28,19 @@ namespace R17A02_FranGV
 
         private float _precio;  // Precio del producto
 
+        // COSNSTRUCTORES
 
+        public Producto()
+        {
+            _nombre = "Desconocido";
+            _precio = 0.0f;
+        }
+
+        public Producto(float Precio)
+        {
+            _nombre = "Desconocido";
+            _precio = Precio;
+        }
 
         // PROPIEDADES (Las propiededas siempren empiezan por mayuscula, sin parentesis)
 
@@ -74,6 +86,14 @@ namespace R17A02_FranGV
 
                 // ESCRITURA
                 _precio = value;
+            }
+        }
+
+        public float PreciosIva
+        {
+            get
+            {
+                return PrecioIva();
             }
         }
         // MÉTODOS PRIVADOS
