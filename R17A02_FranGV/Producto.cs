@@ -30,17 +30,37 @@ namespace R17A02_FranGV
 
         // COSNSTRUCTORES
 
+        /// <summary>
+        /// Constructor por defecto
+        /// </summary>
         public Producto()
         {
             _nombre = "Desconocido";
             _precio = 0.0f;
         }
 
-        public Producto(float Precio)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nameP"></param>
+        public Producto(string nameP)
         {
-            _nombre = "Desconocido";
-            _precio = Precio;
+            _nombre = nameP;
+            _precio = 0.0f;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="namep"></param>
+        /// <param name="price"></param>
+        public Producto(string namep, float price)
+        {
+            _nombre = namep;
+            _precio = price;
+        }
+
+
 
         // PROPIEDADES (Las propiededas siempren empiezan por mayuscula, sin parentesis)
 
@@ -96,6 +116,15 @@ namespace R17A02_FranGV
                 return PrecioIva();
             }
         }
+
+        public float IVA
+        {
+            get
+            {
+                return PrecioIva();
+            }
+        }
+
         // MÉTODOS PRIVADOS
 
         public float PrecioIva()
